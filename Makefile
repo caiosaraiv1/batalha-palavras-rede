@@ -1,15 +1,15 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -pedantic -std=c11 -Iinclude
 
-all: bin/servidor bin/cliente
+all: servidor cliente
 
-bin/servidor: src/servidor.c src/jogo.c include/jogo.h include/protocolo.h
-	$(CC) $(CFLAGS) -o bin/servidor src/servidor.c src/jogo.c -lpthread
+servidor: src/servidor.c src/jogo.c include/jogo.h include/protocolo.h
+	$(CC) $(CFLAGS) -o servidor src/servidor.c src/jogo.c -lpthread
 
-bin/cliente: src/cliente.c src/jogo.c include/jogo.h include/protocolo.h
-	$(CC) $(CFLAGS) -o bin/cliente src/cliente.c src/jogo.c
+cliente: src/cliente.c src/jogo.c include/jogo.h include/protocolo.h
+	$(CC) $(CFLAGS) -o cliente src/cliente.c src/jogo.c
 
 clean:
-	rm -f bin/servidor bin/cliente
+	rm -f servidor cliente
 
 .PHONY: all clean
